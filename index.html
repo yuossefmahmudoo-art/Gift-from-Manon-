@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 هدية رمضان الخاصة - 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- شاشة التحميل الرومانسية -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="ramadan-decoration">
+            <div class="moon-stars">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="lanterns">
+                <div class="lantern"></div>
+                <div class="lantern"></div>
+                <div class="lantern"></div>
+            </div>
+        </div>
+        
+        <div class="loading-box">
+            <div class="heart-logo">
+                <div class="heart-container">
+                    <svg class="heart-shape" viewBox="0 0 100 100">
+                        <path d="M50,90 C50,90 10,60 10,35 C10,20 20,10 30,10 C40,10 50,20 50,20 C50,20 60,10 70,10 C80,10 90,20 90,35 C90,60 50,90 50,90 Z" 
+                              fill="url(#heartGradient)" stroke="#ff1493" stroke-width="2"/>
+                        <defs>
+                            <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff69b4;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff1493;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="my-text">
+                        <span class="letter-m">M</span>
+                        <span class="letter-y">Y</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="romantic-message">
+                <h2 class="loading-title">إلى أغلى إنسانة في حياتي...</h2>
+                <p class="from-heart">هديتي ليكي من قلبي 💖</p>
+            </div>
+            
+            <div class="loading-bar-container">
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loadingProgress"></div>
+                </div>
+                <p class="loading-percentage" id="loadingPercentage">0%</p>
+            </div>
+            <p class="loading-message" id="loadingMessage">بحضرلك حاجة خاصة جداً... ❤️</p>
+        </div>
+        
+        <div class="floating-hearts">
+            <span>💕</span>
+            <span>💖</span>
+            <span>💗</span>
+            <span>💝</span>
+            <span>💞</span>
+        </div>
+    </div>
+
+    <!-- شاشة كلمة المرور الرومانسية -->
+    <div id="passwordScreen" class="password-screen hidden">
+        <div class="ramadan-bg">
+            <div class="mosque-silhouette"></div>
+            <div class="ramadan-moon"></div>
+            <div class="twinkling-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        
+        <div class="password-box">
+            <div class="lock-animation">
+                <div class="heart-lock">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-lock"></i>
+                </div>
+            </div>
+            
+            <h1 class="password-title">💝 هدية خاصة جداً</h1>
+            <p class="password-subtitle">أجمل هدية لأجمل حبيبة في أول رمضان لينا 🌙</p>
+            
+            <div class="love-quote">
+                <p>"أنتي نور حياتي... وفرحة قلبي"</p>
+            </div>
+            
+            <div class="password-container">
+                <label for="passwordInput">
+                    <i class="fas fa-key"></i>
+                    أدخلي التاريخ السري لفتح الهدية:
+                </label>
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="passwordInput" 
+                        placeholder="DD/MM/YYYY" 
+                        maxlength="10"
+                        autocomplete="off"
+                    >
+                    <i class="fas fa-calendar-heart input-icon"></i>
+                </div>
+                <button id="unlockBtn" onclick="checkPassword()">
+                    <i class="fas fa-unlock-heart"></i>
+                    فتح الهدية
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+
+            <div class="password-hints">
+                <div class="hint-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <p class="hint">اليوم اللي بدأت فيه قصتنا الجميلة</p>
+                </div>
+                <p class="hint-sub">💕 يوم ما نسيته ولا هنساه أبداً</p>
+            </div>
+
+            <div id="errorMsg" class="error-message hidden">
+                <i class="fas fa-heart-broken"></i>
+                <p>التاريخ غلط يا قلبي... حاولي تفتكري 💭</p>
+                <span class="error-glow"></span>
+            </div>
+        </div>
+
+        <!-- خلفية متحركة -->
+        <div class="background-hearts">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+        </div>
+    </div>
+
+    <!-- الهدية الرئيسية -->
+    <div id="giftContainer" class="gift-container hidden">
+        
+        <!-- رسالة الترحيب الرمضانية -->
+        <div id="welcomeModal" class="welcome-modal">
+            <div class="modal-overlay"></div>
+            <div class="welcome-content">
+                <div class="ramadan-header">
+                    <div class="crescent-moon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="islamic-pattern"></div>
+                </div>
+                
+                <div class="celebration">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                
+                <h1 class="welcome-title">
+                    🌙 رمضان كريم يا أغلى إنسانة 🌙
+                </h1>
+                <p class="welcome-text">أول رمضان في حياتنا سوا...</p>
+                <p class="welcome-text-sub">بداية لكل الأفراح والذكريات الجميلة القادمة</p>
+                
+                <div class="ramadan-wishes">
+                    <p>🤲 كل سنة وأنتي طيبة يا حبيبتي</p>
+                    <p>🌹 ربنا يديمك ليا ويبارك في حياتنا</p>
+                    <p>💕 ويجمعنا على خير دايماً</p>
+                </div>
+                
+                <div class="welcome-hearts-animation">
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💖</span>
+                    <span>💗</span>
+                    <span>💝</span>
+                </div>
+                
+                <button class="welcome-btn" onclick="closeWelcome()">
+                    <i class="fas fa-gift"></i>
+                    ابدأي استكشاف الهدية
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- الصفحة الرئيسية -->
+        <div class="main-page">
+            
+            <!-- الهيدر الرمضاني -->
+            <header class="gift-header">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <div class="mini-heart-logo">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h1 class="header-title">
+                                <i class="fas fa-gift"></i>
+                                هديتك الخاصة
+                            </h1>
+                            <p class="header-subtitle">رمضان 2026 - أول رمضان لينا 🌙</p>
+                        </div>
+                    </div>
+                    <p class="header-date" id="currentDate"></p>
+                </div>
+                <div class="header-decoration">
+                    <div class="ramadan-lantern">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="ramadan-lantern">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- بطاقة العد التنازلي الرمضانية -->
+            <section class="hero-section">
+                <div class="love-counter-card">
+                    <div class="islamic-border"></div>
+                    <h2 class="counter-title">
+                        <i class="fas fa-heart-pulse"></i>
+                        مرّ على قصة حبنا
+                    </h2>
+                    <div class="counter-display">
+                        <div class="counter-box">
+                            <div class="counter-icon">📅</div>
+                            <span class="counter-number" id="days">0</span>
+                            <span class="counter-label">يوم</span>
+                        </div>
+                        <div class="counter-divider">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="counter-box">
+                            <div class="counter-icon">⏰</div>
+                            <span class="counter-number" id="hours">0</span>
+                            <span class="counter-label">ساعة</span>
+                        </div>
+                        <div class="counter-divider">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="counter-box">
+                            <div class="counter-icon">⏱️</div>
+                            <span class="counter-number" id="minutes">0</span>
+                            <span class="counter-label">دقيقة</span>
+                        </div>
+                        <div class="counter-divider">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="counter-box">
+                            <div class="counter-icon">⏲️</div>
+                            <span class="counter-number" id="seconds">0</span>
+                            <span class="counter-label">ثانية</span>
+                        </div>
+                    </div>
+                    <p class="counter-message">
+                        <i class="fas fa-infinity"></i>
+                        وكل لحظة معاكي أحلى من اللي قبلها ❤️
+                    </p>
+                    <div class="love-percentage">
+                        <p>نسبة الحب: <span>∞%</span></p>
+                        <div class="love-bar">
+                            <div class="love-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- أقسام الهدية -->
+            <section class="gift-sections">
+                
+                <!-- قسم أذكار رمضان -->
+                <div class="section-card ramadan-section">
+                    <div class="section-header">
+                        <i class="fas fa-praying-hands section-icon"></i>
+                        <h3>أذكار رمضانية</h3>
+                        <span class="ramadan-badge">🌙</span>
+                    </div>
+                    <div class="azkar-container">
+                        <div class="azkar-card">
+                            <div class="azkar-icon">🤲</div>
+                            <h4>دعاء الإفطار</h4>
+                            <p class="azkar-text">اللهم لك صمت وعلى رزقك أفطرت</p>
+                        </div>
+                        <div class="azkar-card">
+                            <div class="azkar-icon">📿</div>
+                            <h4>دعاء السحور</h4>
+                            <p class="azkar-text">نويت أن أصوم غداً من شهر رمضان</p>
+                        </div>
+                        <div class="azkar-card">
+                            <div class="azkar-icon">🌙</div>
+                            <h4>دعاء رؤية الهلال</h4>
+                            <p class="azkar-text">اللهم أهله علينا بالأمن والإيمان</p>
+                        </div>
+                        <div class="azkar-card special-dua">
+                            <div class="azkar-icon">💕</div>
+                            <h4>دعاء خاص لينا</h4>
+                            <p class="azkar-text">اللهم ارزقنا السعادة والبركة في حياتنا واجمعنا على خير 🤲</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قسم رسائل الحب -->
+                <div class="section-card messages-section">
+                    <div class="section-header">
+                        <i class="fas fa-envelope-open-heart section-icon"></i>
+                        <h3>رسائل من القلب</h3>
+                        <span class="section-badge">4</span>
+                    </div>
+                    <div class="messages-grid">
+                        <div class="message-card" onclick="openMessage(1)">
+                            <div class="message-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>رسالة الحب الأولى</h4>
+                                <p>كلمات من القلب للقلب...</p>
+                                <span class="message-tag">💝 رومانسي</span>
+                            </div>
+                            <i class="fas fa-chevron-left message-arrow"></i>
+                        </div>
+
+                        <div class="message-card" onclick="openMessage(2)">
+                            <div class="message-icon moon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>بمناسبة رمضان</h4>
+                                <p>أول رمضان لينا سوا...</p>
+                                <span class="message-tag">🌙 رمضاني</span>
+                            </div>
+                            <i class="fas fa-chevron-left message-arrow"></i>
+                        </div>
+
+                        <div class="message-card" onclick="openMessage(3)">
+                            <div class="message-icon ring">
+                                <i class="fas fa-ring"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>وعد وعهد</h4>
+                                <p>وعودي ليكي للمستقبل...</p>
+                                <span class="message-tag">💍 وعود</span>
+                            </div>
+                            <i class="fas fa-chevron-left message-arrow"></i>
+                        </div>
+
+                        <div class="message-card" onclick="openMessage(4)">
+                            <div class="message-icon infinity">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                            <div class="message-content">
+                                <h4>للأبد</h4>
+                                <p>حبك في قلبي للأبد...</p>
+                                <span class="message-tag">♾️ أبدي</span>
+                            </div>
+                            <i class="fas fa-chevron-left message-arrow"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم ألبوم الذكريات -->
+                <div class="section-card memories-section">
+                    <div class="section-header">
+                        <i class="fas fa-images section-icon"></i>
+                        <h3>ألبوم ذكرياتنا الجميلة</h3>
+                        <button class="slideshow-btn" onclick="startSlideshow()">
+                            <i class="fas fa-play"></i>
+                            عرض تلقائي
+                        </button>
+                    </div>
+                    <div class="memories-intro">
+                        <p>📸 كل صورة فيها قصة... كل لحظة فيها حب ❤️</p>
+                    </div>
+                    <div class="photos-gallery">
+                        <div class="photo-item" onclick="openPhotoViewer(0)">
+                            <div class="photo-frame">
+                                <img src="https://i.postimg.cc/90Hj5f3J/01K39A2MG2C6PGM7QQS3RX6CGN.jpg" alt="ذكرى 1">
+                            </div>
+                            <div class="photo-overlay">
+                                <i class="fas fa-search-plus"></i>
+                                <p>من أجمل اللحظات</p>
+                            </div>
+                            <div class="photo-badge">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="photo-item" onclick="openPhotoViewer(1)">
+                            <div class="photo-frame">
+                                <img src="https://i.postimg.cc/C5CpFVYP/01K399MW4936BB4TJPP53PHVSG.jpg" alt="ذكرى 2">
+                            </div>
+                            <div class="photo-overlay">
+                                <i class="fas fa-search-plus"></i>
+                                <p>ذكرى جميلة</p>
+                            </div>
+                            <div class="photo-badge">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="photo-item" onclick="openPhotoViewer(2)">
+                            <div class="photo-frame">
+                                <img src="https://i.postimg.cc/VLBzwXkF/01K399D6KJCXSGPV7TZTHSHV8T.jpg" alt="ذكرى 3">
+                            </div>
+                            <div class="photo-overlay">
+                                <i class="fas fa-search-plus"></i>
+                                <p>لحظات لا تُنسى</p>
+                            </div>
+                            <div class="photo-badge">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="photo-item" onclick="openPhotoViewer(3)">
+                            <div class="photo-frame">
+                                <img src="https://i.postimg.cc/4yvRJTsR/01K111R8AHJS5G8S9ZY6V23MPX.jpg" alt="ذكرى 4">
+                            </div>
+                            <div class="photo-overlay">
+                                <i class="fas fa-search-plus"></i>
+                                <p>معاكي كل حاجة حلوة</p>
+                            </div>
+                            <div class="photo-badge">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم الأمنيات الرمضانية -->
+                <div class="section-card wishes-section">
+                    <div class="section-header">
+                        <i class="fas fa-star-shooting section-icon"></i>
+                        <h3>أمنياتنا في رمضان المبارك</h3>
+                    </div>
+                    
+                    <div class="wishes-container">
+                        <div class="wish-box">
+                            <div class="wish-emoji">🤲</div>
+                            <h4>دعوة من القلب</h4>
+                            <p>ربنا يديمك ليا ويجمعنا على خير دايماً، ويبارك في حياتنا ويرزقنا السعادة والذرية الصالحة</p>
+                            <button class="amen-btn">آمين 🤲</button>
+                        </div>
+
+                        <div class="wish-box">
+                            <div class="wish-emoji">🏡</div>
+                            <h4>حلم البيت</h4>
+                            <p>نفسي نكون في بيتنا قريب، وكل رمضان نفطر سوا ونقوم الليل سوا ونعيش أحلى حياة</p>
+                            <button class="amen-btn">إن شاء الله 💕</button>
+                        </div>
+
+                        <div class="wish-box">
+                            <div class="wish-emoji">👶</div>
+                            <h4>أمنية المستقبل</h4>
+                            <p>بدعي ربنا يرزقنا بأولاد صالحين يملوا حياتنا فرحة، ونربيهم على حب ربنا وطاعته</p>
+                            <button class="amen-btn">آمين يا رب 🌟</button>
+                        </div>
+
+                        <div class="wish-box">
+                            <div class="wish-emoji">✈️</div>
+                            <h4>رحلات الأحلام</h4>
+                            <p>عايز نسافر سوا أماكن كتير، ونعمل ذكريات جميلة في كل مكان، ونشوف الدنيا مع بعض</p>
+                            <button class="amen-btn">Soon 🌍</button>
+                        </div>
+                    </div>
+
+                    <!-- صندوق الأمنية الشخصية -->
+                    <div class="personal-wish-box">
+                        <h4>
+                            <i class="fas fa-star"></i>
+                            اكتبي أمنيتك الخاصة
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <textarea 
+                            id="userWish" 
+                            placeholder="اكتبي أمنيتك هنا... وان شاء الله تتحقق ❤️"
+                            rows="4"
+                        ></textarea>
+                        <button class="save-wish-btn" onclick="saveWish()">
+                            <i class="fas fa-heart"></i>
+                            احفظي الأمنية
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <p id="wishSaved" class="wish-saved-msg hidden">
+                            <i class="fas fa-check-circle"></i>
+                            تم حفظ أمنيتك... ربنا يحققها 🤲💕
+                        </p>
+                    </div>
+                </div>
+
+                <!-- قسم الإحصائيات -->
+                <div class="section-card stats-section">
+                    <div class="section-header">
+                        <i class="fas fa-chart-heart section-icon"></i>
+                        <h3>إحصائيات حبنا</h3>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>نبضات القلب</h4>
+                                <p class="stat-number" id="heartbeats">0</p>
+                                <span class="stat-desc">نبضة حب ليكي</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile-beam"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>لحظات سعادة</h4>
+                                <p class="stat-number">∞</p>
+                                <span class="stat-desc">لحظة جميلة</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-comments-heart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>كلمات حب</h4>
+                                <p class="stat-number" id="messages">0</p>
+                                <span class="stat-desc">كلمة حب قلتها</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h4>مدة الحب</h4>
+                                <p class="stat-number">للأبد</p>
+                                <span class="stat-desc">إن شاء الله ❤️</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill infinite"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم المفاجأة -->
+                <div class="section-card surprise-section">
+                    <div class="section-header">
+                        <i class="fas fa-gift section-icon"></i>
+                        <h3>مفاجأة خاصة ليكي</h3>
+                    </div>
+                    
+                    <div class="surprise-box" id="surpriseBox">
+                        <div class="surprise-gift" onclick="openSurprise()">
+                            <div class="surprise-gift-box">
+                                <div class="surprise-lid"></div>
+                                <div class="surprise-body"></div>
+                                <div class="surprise-ribbon"></div>
+                                <div class="surprise-sparkles">
+                                    <i class="fas fa-sparkles"></i>
+                                    <i class="fas fa-sparkles"></i>
+                                    <i class="fas fa-sparkles"></i>
+                                </div>
+                            </div>
+                            <p class="surprise-text">
+                                <i class="fas fa-hand-pointer"></i>
+                                اضغطي على الهدية! 🎁
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="surprise-revealed hidden" id="surpriseRevealed">
+                        <div class="surprise-content">
+                            <h2>🎉 مفاجأة! 🎉</h2>
+                            <div class="surprise-message">
+                                <p>💍 قريباً... هنروح رحلة خاصة بينا!</p>
+                                <p>🌹 مكان رومانسي وجميل جداً</p>
+                                <p>✨ استني التفاصيل... هفاجئك 😊</p>
+                                <p>❤️ بحبك يا أحلى حاجة في حياتي</p>
+                            </div>
+                            <button class="close-surprise-btn" onclick="closeSurprise()">
+                                <i class="fas fa-heart"></i>
+                                شكراً حبيبي
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- الفوتر الرمضاني -->
+            <footer class="gift-footer">
+                <div class="footer-ramadan-decoration">
+                    <div class="footer-lantern"></div>
+                    <div class="footer-lantern"></div>
+                </div>
+                <div class="footer-content">
+                    <p class="footer-message">
+                        <i class="fas fa-heart"></i>
+                        صُنعت هذه الهدية بكل حب
+                        <i class="fas fa-heart"></i>
+                    </p>
+                    <p class="footer-date">
+                        🌙 رمضان 2026 - أول رمضان لينا 🌙
+                    </p>
+                    <div class="footer-hearts">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p class="footer-quote">
+                        "معاكي كل يوم عيد... وكل لحظة حلم" 💕
+                    </p>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- نافذة عرض الرسائل -->
+    <div id="messageModal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeMessage()"></div>
+        <div class="modal-content message-modal">
+            <button class="modal-close" onclick="closeMessage()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+                <h2 id="messageTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <p id="messageBody"></p>
+            </div>
+            <div class="modal-footer">
+                <p class="message-signature">
+                    <i class="fas fa-heart"></i>
+                    بحبك
+                    <i class="fas fa-heart"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة عرض الصور -->
+    <div id="photoModal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closePhotoViewer()"></div>
+        <div class="photo-viewer">
+            <button class="modal-close white" onclick="closePhotoViewer()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <button class="photo-nav prev" onclick="prevPhoto()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="photo-container">
+                <div class="photo-frame-viewer">
+                    <img id="photoImage" src="" alt="صورة">
+                </div>
+                <div class="photo-info">
+                    <p id="photoCaption"></p>
+                    <span id="photoCounter"></span>
+                </div>
+            </div>
+            
+            <button class="photo-nav next" onclick="nextPhoto()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- مشغل الموسيقى الرومانسي -->
+    <div id="musicPlayer" class="music-player hidden">
+        <div class="music-disc">
+            <i class="fas fa-music"></i>
+            <div class="disc-glow"></div>
+        </div>
+        <div class="music-info">
+            <p class="music-title">أغنية رومانسية</p>
+            <p class="music-artist">خاص بينا ❤️</p>
+        </div>
+        <button class="music-control" id="playPauseBtn" onclick="toggleMusic()">
+            <i class="fas fa-play"></i>
+        </button>
+        <div class="music-equalizer">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://files.catbox.moe/4quo3l.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
