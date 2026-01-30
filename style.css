@@ -1004,7 +1004,9 @@ body {
 .ramadan-lantern i {
     color: var(--ramadan-gold);
     filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
-/* ===== تكملة style.css ===== */
+}
+
+/* يتبع في الرد التالي... *//* ===== تكملة style.css ===== */
 
 /* بطاقة العد التنازلي الرومانسية */
 .hero-section {
@@ -2416,29 +2418,4 @@ body {
 
     .letter-m, .letter-y {
         font-size: 40px;
-    }
-}
-
-/* ===== Scrollbar ===== */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 182, 193, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--gradient-romantic);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gradient-purple-pink);
-}
-
-/* ===== Selection ===== */
-::selection {
-    background: var(--pink-deep);
-    color: white;
-}
+ 
